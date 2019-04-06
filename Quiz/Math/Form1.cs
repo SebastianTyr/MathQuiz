@@ -14,38 +14,55 @@ namespace Math
     {
         int a;
         int b;
+        int timeleft;
         public MQuiz()
         {
             InitializeComponent();
+            labeltime.Text = "30 sekund";
+            button_restart.Enabled = false;
         }
 
         private void buttonstart_Click(object sender, EventArgs e)
         {
             Random wylosowana = new Random();
-            //Komputer losuje działania
             a = wylosowana.Next(1, 101);
             b = wylosowana.Next(1, 101);
-            label_a.Text = a.ToString();
-            label_b.Text = b.ToString();
+            PlusLeftLabel.Text = a.ToString();
+            PlusRightLabel.Text = b.ToString();
             buttonstart.Enabled = false;
+
+            timeleft = 30;
+            timer1.Start();
         }
 
-        private void buttonOK_Click(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e)
         {
-            int liczba = Convert.ToInt32(textBoxsum.Text);
-            int wynik = a + b;
-            if (liczba < wynik)
+            if (timeleft > 0)
             {
-                labelwynik.Text = string.Format("Wynik za mały");
-            }
-            else if (liczba > wynik)
-            {
-                labelwynik.Text = string.Format("Wynik za duży");
+                timeleft = timeleft - 1;
+                labeltime.Text = timeleft + " sekund";
             }
             else
             {
-                labelwynik.Text = string.Format("Brawo ! Wynik poprawny");
+                timer1.Stop();
+                labeltime.Text = "Czas minął";
+                MessageBox.Show("Nieukończyłeś quizu w wyznaczonym czasie");
+                button_restart.Enabled = true;
             }
+        }
+
+        private void button_restart_Click(object sender, EventArgs e)
+        {
+            Random wylosowana = new Random();
+            a = wylosowana.Next(1, 101);
+            b = wylosowana.Next(1, 101);
+            PlusLeftLabel.Text = a.ToString();
+            PlusRightLabel.Text = b.ToString();
+            buttonstart.Enabled = false;
+
+            timeleft = 30;
+            timer1.Start();
+            button_restart.Enabled = false;
         }
     }
 }
