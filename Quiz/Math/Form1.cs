@@ -29,6 +29,7 @@ namespace Math
             b = wylosowana.Next(1, 101);
             PlusLeftLabel.Text = a.ToString();
             PlusRightLabel.Text = b.ToString();
+            sum.Value = 0;
             buttonstart.Enabled = false;
 
             timeleft = 30;
