@@ -34,7 +34,6 @@
             this.PlusRightLabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.buttonstart = new System.Windows.Forms.Button();
-            this.labelwynik = new System.Windows.Forms.Label();
             this.MinusLeftLabel = new System.Windows.Forms.Label();
             this.TimesLeftLabel = new System.Windows.Forms.Label();
             this.DividedLeftLabel = new System.Windows.Forms.Label();
@@ -50,7 +49,7 @@
             this.sum = new System.Windows.Forms.NumericUpDown();
             this.minus = new System.Windows.Forms.NumericUpDown();
             this.product = new System.Windows.Forms.NumericUpDown();
-            this.divided = new System.Windows.Forms.NumericUpDown();
+            this.quotient = new System.Windows.Forms.NumericUpDown();
             this.button_restart = new System.Windows.Forms.Button();
             this.labeltime = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -58,7 +57,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.sum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.product)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.divided)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quotient)).BeginInit();
             this.SuspendLayout();
             // 
             // PlusLeftLabel
@@ -110,16 +109,6 @@
             this.buttonstart.Text = "Start";
             this.buttonstart.UseVisualStyleBackColor = true;
             this.buttonstart.Click += new System.EventHandler(this.buttonstart_Click);
-            // 
-            // labelwynik
-            // 
-            this.labelwynik.AutoSize = true;
-            this.labelwynik.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelwynik.Location = new System.Drawing.Point(149, 270);
-            this.labelwynik.Name = "labelwynik";
-            this.labelwynik.Size = new System.Drawing.Size(77, 16);
-            this.labelwynik.TabIndex = 8;
-            this.labelwynik.Text = "Komunikat1";
             // 
             // MinusLeftLabel
             // 
@@ -245,9 +234,15 @@
             // 
             this.sum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.sum.Location = new System.Drawing.Point(184, 71);
+            this.sum.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
             this.sum.Name = "sum";
             this.sum.Size = new System.Drawing.Size(90, 26);
             this.sum.TabIndex = 22;
+            this.sum.Enter += new System.EventHandler(this.answer_Enter);
             // 
             // minus
             // 
@@ -261,17 +256,27 @@
             // 
             this.product.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.product.Location = new System.Drawing.Point(184, 165);
+            this.product.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             this.product.Name = "product";
             this.product.Size = new System.Drawing.Size(90, 26);
             this.product.TabIndex = 24;
             // 
-            // divided
+            // quotient
             // 
-            this.divided.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.divided.Location = new System.Drawing.Point(184, 208);
-            this.divided.Name = "divided";
-            this.divided.Size = new System.Drawing.Size(90, 26);
-            this.divided.TabIndex = 25;
+            this.quotient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.quotient.Location = new System.Drawing.Point(184, 208);
+            this.quotient.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.quotient.Name = "quotient";
+            this.quotient.Size = new System.Drawing.Size(90, 26);
+            this.quotient.TabIndex = 25;
             // 
             // button_restart
             // 
@@ -315,7 +320,7 @@
             this.Controls.Add(this.label16);
             this.Controls.Add(this.labeltime);
             this.Controls.Add(this.button_restart);
-            this.Controls.Add(this.divided);
+            this.Controls.Add(this.quotient);
             this.Controls.Add(this.product);
             this.Controls.Add(this.minus);
             this.Controls.Add(this.sum);
@@ -331,7 +336,6 @@
             this.Controls.Add(this.DividedLeftLabel);
             this.Controls.Add(this.TimesLeftLabel);
             this.Controls.Add(this.MinusLeftLabel);
-            this.Controls.Add(this.labelwynik);
             this.Controls.Add(this.buttonstart);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.PlusRightLabel);
@@ -342,7 +346,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.sum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.minus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.product)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.divided)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quotient)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -355,7 +359,6 @@
         private System.Windows.Forms.Label PlusRightLabel;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button buttonstart;
-        private System.Windows.Forms.Label labelwynik;
         private System.Windows.Forms.Label MinusLeftLabel;
         private System.Windows.Forms.Label TimesLeftLabel;
         private System.Windows.Forms.Label DividedLeftLabel;
@@ -371,7 +374,7 @@
         private System.Windows.Forms.NumericUpDown sum;
         private System.Windows.Forms.NumericUpDown minus;
         private System.Windows.Forms.NumericUpDown product;
-        private System.Windows.Forms.NumericUpDown divided;
+        private System.Windows.Forms.NumericUpDown quotient;
         private System.Windows.Forms.Button button_restart;
         private System.Windows.Forms.Label labeltime;
         private System.Windows.Forms.Label label16;
