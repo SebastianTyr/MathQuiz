@@ -12,45 +12,65 @@ namespace Math
 {
     public partial class MQuiz : Form
     {
-        //Tworzymy "generator" liczb losowych
+        //Creating generator random numbers
         Random generator = new Random();
 
-        int plus_a;
-        int plus_b;
+        int addend_a;
+        int addend_b;
         int minuend;
         int subtrahend;
+        int multiplicant;
+        int multiplier;
+        int dividend;
+        int divisor;
 
+        int start_time;
         int timeleft;
         public MQuiz()
         {
             InitializeComponent();
-            labeltime.Text = "30 sekund";
+            labeltime.Text = "45 sekund";
             button_restart.Enabled = false;
         }
 
         public void QuizStart()
         {
-            //dodawanie
-            plus_a = generator.Next(1, 101);
-            plus_b = generator.Next(1, 101);
-            PlusLeftLabel.Text = plus_a.ToString();
-            PlusRightLabel.Text = plus_b.ToString();
+            //dAddition
+            addend_a = generator.Next(1, 101);
+            addend_b = generator.Next(1, 101);
+            PlusLeftLabel.Text = addend_a.ToString();
+            PlusRightLabel.Text = addend_b.ToString();
             sum.Value = 0;
 
-            //odejmowanie
+            //Subtrahend
             minuend = generator.Next(1, 101);
             subtrahend = generator.Next(1, minuend);
             MinusLeftLabel.Text = minuend.ToString();
             MinusRightLabel.Text = subtrahend.ToString();
 
-            //nasz timer
-            timeleft = 30;
+            //Multiplication
+            multiplicant = generator.Next(1, 101);
+            multiplier = generator.Next(1, 101);
+            TimesLeftLabel.Text = multiplicant.ToString();
+            TimesRightLabel.Text = multiplier.ToString();
+            product.Value = 0;
+
+            //Division
+            divisor = generator.Next(2, 11);
+            int temporaryQuotient = generator.Next(2, 11);
+            dividend = divisor * temporaryQuotient;
+            DividedLeftLabel.Text = dividend.ToString();
+            DividedRightLabel.Text = divisor.ToString();
+
+            //The timer
+            start_time = 45;
+            timeleft = start_time;
             timer1.Start();
         }
 
         private bool CheckTheAnswer()
         {
-            if ((plus_a + plus_b == sum.Value) && (minuend - subtrahend == minus.Value))
+            if ((addend_a + addend_b == sum.Value) && (minuend - subtrahend == minus.Value))
             {
                 return true;
             }
@@ -68,17 +88,16 @@ namespace Math
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //Sprawdzenie poprawnosci odpowiedzi
             if (CheckTheAnswer())
             {
-                //funkcja zwraca true - poprawna odpowiedz
+                //Function returns true value - correct answer
                 timer1.Stop();
                 MessageBox.Show("Gratulacje! Wszystkie odpowiedzi są prawidłowe");
                 button_restart.Enabled = true;
             }
             else if (timeleft > 0)
             {
-                //funkcja zwraca false - kontynuuj odliczanie
+                //Function returns false value - incorrect answer
                 timeleft = timeleft - 1;
                 labeltime.Text = timeleft + " sekund";
             }
@@ -88,19 +107,28 @@ namespace Math
                 labeltime.Text = "Czas minął";
                 MessageBox.Show("Nieukończyłeś quizu w wyznaczonym czasie");
                 button_restart.Enabled = true;
-                sum.Value = plus_a + plus_b;
+                sum.Value = addend_a + addend_b;
                 minus.Value = minuend - subtrahend;
             }
         }
 
         private void button_restart_Click(object sender, EventArgs e)
         {
-            QuizStart();
+            labeltime.Text = "45 sekund";
+            PlusLeftLabel.Text = "?";
+            PlusRightLabel.Text = "?";
+            MinusLeftLabel.Text = "?";
+            MinusRightLabel.Text = "?";
+            TimesLeftLabel.Text = "?";
+            TimesRightLabel.Text = "?";
+            DividedLeftLabel.Text = "?";
+            DividedRightLabel.Text = "?";
             sum.Value = 0;
             minus.Value = 0;
             product.Value = 0;
             quotient.Value = 0;
             button_restart.Enabled = false;
+            buttonstart.Enabled = true;
         }
 
         private void answer_Enter(object sender, EventArgs e)
