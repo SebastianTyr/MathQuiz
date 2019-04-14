@@ -54,6 +54,7 @@
             this.labeltime = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.button_hint = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.sum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.product)).BeginInit();
@@ -242,6 +243,7 @@
             this.sum.Name = "sum";
             this.sum.Size = new System.Drawing.Size(90, 26);
             this.sum.TabIndex = 22;
+            this.sum.ValueChanged += new System.EventHandler(this.answer_checker);
             this.sum.Enter += new System.EventHandler(this.answer_Enter);
             // 
             // minus
@@ -251,6 +253,7 @@
             this.minus.Name = "minus";
             this.minus.Size = new System.Drawing.Size(90, 26);
             this.minus.TabIndex = 23;
+            this.minus.ValueChanged += new System.EventHandler(this.answer_checker);
             // 
             // product
             // 
@@ -264,6 +267,7 @@
             this.product.Name = "product";
             this.product.Size = new System.Drawing.Size(90, 26);
             this.product.TabIndex = 24;
+            this.product.ValueChanged += new System.EventHandler(this.answer_checker);
             // 
             // quotient
             // 
@@ -277,10 +281,11 @@
             this.quotient.Name = "quotient";
             this.quotient.Size = new System.Drawing.Size(90, 26);
             this.quotient.TabIndex = 25;
+            this.quotient.ValueChanged += new System.EventHandler(this.answer_checker);
             // 
             // button_restart
             // 
-            this.button_restart.Location = new System.Drawing.Point(308, 118);
+            this.button_restart.Location = new System.Drawing.Point(308, 156);
             this.button_restart.Name = "button_restart";
             this.button_restart.Size = new System.Drawing.Size(75, 45);
             this.button_restart.TabIndex = 26;
@@ -312,11 +317,23 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // button_hint
+            // 
+            this.button_hint.Location = new System.Drawing.Point(308, 117);
+            this.button_hint.Name = "button_hint";
+            this.button_hint.Size = new System.Drawing.Size(75, 23);
+            this.button_hint.TabIndex = 29;
+            this.button_hint.Text = "Podpowiedź";
+            this.button_hint.UseVisualStyleBackColor = true;
+            this.button_hint.Click += new System.EventHandler(this.button_hint_Click);
+            // 
             // MQuiz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(408, 330);
+            this.Controls.Add(this.button_hint);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.labeltime);
             this.Controls.Add(this.button_restart);
@@ -379,6 +396,7 @@
         private System.Windows.Forms.Label labeltime;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button button_hint;
     }
 }
 

@@ -12,6 +12,11 @@ namespace Math
 {
     public partial class MQuiz : Form
     {
+        /// <summary>
+        /// Simple Math quiz
+        /// </summary>
+
+
         //Creating generator random numbers
         Random generator = new Random();
 
@@ -31,11 +36,12 @@ namespace Math
             InitializeComponent();
             labeltime.Text = "45 sekund";
             button_restart.Enabled = false;
+            button_hint.Enabled = false;
         }
 
         public void QuizStart()
         {
-            //dAddition
+            //Addition
             addend_a = generator.Next(1, 101);
             addend_b = generator.Next(1, 101);
             PlusLeftLabel.Text = addend_a.ToString();
@@ -70,7 +76,8 @@ namespace Math
 
         private bool CheckTheAnswer()
         {
-            if ((addend_a + addend_b == sum.Value) && (minuend - subtrahend == minus.Value))
+            if ((addend_a + addend_b == sum.Value) && (minuend - subtrahend == minus.Value) && 
+                (multiplicant * multiplier == product.Value) && (dividend / divisor == quotient.Value))
             {
                 return true;
             }
@@ -84,6 +91,7 @@ namespace Math
         {
             QuizStart();
             buttonstart.Enabled = false;
+            button_hint.Enabled = true;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -109,6 +117,12 @@ namespace Math
                 button_restart.Enabled = true;
                 sum.Value = addend_a + addend_b;
                 minus.Value = minuend - subtrahend;
+                product.Value = multiplicant * multiplier;
+                quotient.Value = dividend / divisor;
+            }
+            if (timeleft < 5)
+            {
+                labeltime.ForeColor = Color.Red;
             }
         }
 
@@ -129,6 +143,7 @@ namespace Math
             quotient.Value = 0;
             button_restart.Enabled = false;
             buttonstart.Enabled = true;
+            labeltime.ForeColor = Color.Black;
         }
 
         private void answer_Enter(object sender, EventArgs e)
@@ -138,6 +153,49 @@ namespace Math
             {
                 int lengthOfanswer = answerBox.Value.ToString().Length;
                 answerBox.Select(0, lengthOfanswer);
+            }
+        }
+
+        private void button_hint_Click(object sender, EventArgs e)
+        {
+            button_hint.Enabled = false;
+            product.Value = multiplicant * multiplier;
+            timeleft = timeleft - 5;
+        }
+
+        private void answer_checker(object sender, EventArgs e)
+        {
+            if (addend_a + addend_b == sum.Value)
+            {
+                sum.ForeColor = Color.Green;
+            }
+            else
+            {
+                sum.ForeColor = Color.Black;
+            }
+            if (minuend - subtrahend == minus.Value)
+            {
+                minus.ForeColor = Color.Green;
+            }
+            else
+            {
+                minus.ForeColor = Color.Black;
+            }
+            if (multiplicant * multiplier == product.Value)
+            {
+                product.ForeColor = Color.Green;
+            }
+            else
+            {
+                product.ForeColor = Color.Black;
+            }
+            if (dividend / divisor == quotient.Value)
+            {
+                quotient.ForeColor = Color.Green;
+            }
+            else
+            {
+                quotient.ForeColor = Color.Black;
             }
         }
     }
