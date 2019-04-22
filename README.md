@@ -2,6 +2,7 @@
 Prosty quiz matematyczny.
 
 Quiz został napisany w języku C# Windows Froms.
+
 ![]( 	capture_20190422100836.png)
 
 Zakres funkcjonalności quizu:
