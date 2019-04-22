@@ -55,6 +55,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.button_hint = new System.Windows.Forms.Button();
+            this.comment_score = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.sum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.product)).BeginInit();
@@ -295,7 +296,6 @@
             // 
             // labeltime
             // 
-            this.labeltime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labeltime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labeltime.Location = new System.Drawing.Point(184, 27);
             this.labeltime.Name = "labeltime";
@@ -327,12 +327,22 @@
             this.button_hint.UseVisualStyleBackColor = true;
             this.button_hint.Click += new System.EventHandler(this.button_hint_Click);
             // 
+            // comment_score
+            // 
+            this.comment_score.AutoSize = true;
+            this.comment_score.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.comment_score.Location = new System.Drawing.Point(28, 271);
+            this.comment_score.Name = "comment_score";
+            this.comment_score.Size = new System.Drawing.Size(0, 20);
+            this.comment_score.TabIndex = 30;
+            // 
             // MQuiz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(408, 330);
+            this.Controls.Add(this.comment_score);
             this.Controls.Add(this.button_hint);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.labeltime);
@@ -397,6 +407,7 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button button_hint;
+        private System.Windows.Forms.Label comment_score;
     }
 }
 

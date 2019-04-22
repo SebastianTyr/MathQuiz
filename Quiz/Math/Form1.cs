@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.VisualBasic;
 
 namespace Math
 {
@@ -76,7 +77,7 @@ namespace Math
 
         private bool CheckTheAnswer()
         {
-            if ((addend_a + addend_b == sum.Value) && (minuend - subtrahend == minus.Value) && 
+            if ((addend_a + addend_b == sum.Value) && (minuend - subtrahend == minus.Value) &&
                 (multiplicant * multiplier == product.Value) && (dividend / divisor == quotient.Value))
             {
                 return true;
@@ -100,7 +101,10 @@ namespace Math
             {
                 //Function returns true value - correct answer
                 timer1.Stop();
-                MessageBox.Show("Gratulacje! Wszystkie odpowiedzi są prawidłowe");
+                comment_score.Text = "Gratulacje! Wszystkie odpowiedzi są prawidłowe";
+                int score = start_time - timeleft;
+                Interaction.MsgBox("Twój czas to " + score + " sekund", MsgBoxStyle.OkOnly |
+                    MsgBoxStyle.Information, "Najlepsze wyniki");
                 button_restart.Enabled = true;
             }
             else if (timeleft > 0)
@@ -113,14 +117,20 @@ namespace Math
             {
                 timer1.Stop();
                 labeltime.Text = "Czas minął";
-                MessageBox.Show("Nieukończyłeś quizu w wyznaczonym czasie");
+                comment_score.Text = "Nieukończyłeś quizu w wyznaczonym czasie";
                 button_restart.Enabled = true;
                 sum.Value = addend_a + addend_b;
                 minus.Value = minuend - subtrahend;
                 product.Value = multiplicant * multiplier;
                 quotient.Value = dividend / divisor;
             }
-            if (timeleft < 5)
+            if (timeleft == 5)
+            {
+                labeltime.ForeColor = Color.Red;
+                System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"C:\Users\User\Documents\GitHub\MathQuiz\Odliczanie1.wav");
+                player.Play();
+            }
+            else if (timeleft < 5)
             {
                 labeltime.ForeColor = Color.Red;
             }
@@ -158,9 +168,28 @@ namespace Math
 
         private void button_hint_Click(object sender, EventArgs e)
         {
-            button_hint.Enabled = false;
-            product.Value = multiplicant * multiplier;
+            Random hints = new Random();
+            int hint = hints.Next(0, 4);
+
+            if (hint == 0)
+            {
+                sum.Value = addend_a + addend_b;
+            }
+            else if (hint == 1)
+            {
+                minus.Value = minuend - subtrahend;
+            }
+            else if (hint == 2)
+            {
+                product.Value = multiplicant * multiplier;
+            }
+            else if (hint == 3)
+            {
+                quotient.Value = dividend / divisor;
+            }
+
             timeleft = timeleft - 5;
+            button_hint.Enabled = false;
         }
 
         private void answer_checker(object sender, EventArgs e)
