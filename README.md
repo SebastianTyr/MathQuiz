@@ -1,2 +1,13 @@
 # MathQuiz
-Prosty quiz matematyczny, który będę na bieżąco rozwijał o nowe funkcje
+Prosty quiz matematyczny.
+
+Quiz został napisany w języku C# Windows Froms.
+![](capture_20190422100836)
+
+Zakres funkcjonalności quizu:
+- losowanie liczb do działań z zakresu 1 - 100
+- podpowiedź - uzupełnia losowy wynik, jedna na cały quiz
+- możliwość ponownej rozgrywki
+- quiz posiada limit czasowy
+
+Doskonały do zabawy oraz edukacji :-)
