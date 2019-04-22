@@ -2,7 +2,7 @@
 Prosty quiz matematyczny.
 
 Quiz został napisany w języku C# Windows Froms.
-![](capture_20190422100836)
+![]( 	capture_20190422100836.png)
 
 Zakres funkcjonalności quizu:
 - losowanie liczb do działań z zakresu 1 - 100
