@@ -124,13 +124,7 @@ namespace Math
                 product.Value = multiplicant * multiplier;
                 quotient.Value = dividend / divisor;
             }
-            if (timeleft == 5)
-            {
-                labeltime.ForeColor = Color.Red;
-                System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"C:\Users\User\Documents\GitHub\MathQuiz\Odliczanie1.wav");
-                player.Play();
-            }
-            else if (timeleft < 5)
+            if (timeleft <= 5)
             {
                 labeltime.ForeColor = Color.Red;
             }
