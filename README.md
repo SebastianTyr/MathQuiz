@@ -11,4 +11,8 @@ Zakres funkcjonalności quizu:
 - możliwość ponownej rozgrywki
 - quiz posiada limit czasowy
 
+Technologie wykorzystane:
+- C#
+- .NET
+
 Doskonały do zabawy oraz edukacji :-)
